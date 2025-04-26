@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: meu-pv
+spec:
+  capacity:
+    storage: 1Gi # Tamanho do armazenamento (1 GiB)
+  accessModes:
+    - ReadWriteOnce # Modo de acesso (leitura/escrita por um único Pod)
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/dados # Caminho no host onde os dados serão armazenados

@@ -1,0 +1,16 @@
+# pvc.yaml deve ser executado primeiro
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-com-volume
+spec:
+  containers:
+    - name: meu-container
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: volume-persistente
+  volumes:
+    - name: volume-persistente
+      persistentVolumeClaim:
+        claimName: meu-pvc
