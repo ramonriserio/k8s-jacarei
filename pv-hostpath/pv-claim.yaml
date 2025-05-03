@@ -1,0 +1,13 @@
+# Criando uma PersistentVolumeClaim (Requisição de Volume Persistente)
+# Antes de executar esse manifesto é preciso criar um PersistentVolume com o manifesto pv-volume.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
