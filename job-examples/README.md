@@ -35,7 +35,7 @@ Inicialmente, o status estará marcado como "Em execução" (`Running`), mas, ap
 
 Um job permanece ativo até que seja explicitamente excluído. Se deletarmos o job, o pod criado por ele também será removido. Podemos notar que a coluna de conclusões mostra "1 de 1". Por padrão, o Kubernetes define o número de conclusões como "1", mas é possível modificar esse valor.
 
-Por exemplo, digamos que queremos criar um job que execute três ciclos de "sono", em vez de apenas um. Criamos um novo arquivo chamado `three-sleeps.yaml`, semelhante ao anterior, mas definindo o número de conclusões como "3". Agora, implantamos esse job:
+Por exemplo, digamos que queremos criar um job que execute três ciclos de "sono", em vez de apenas um. Criamos um novo arquivo chamado `three-sleeps.yaml`, semelhante ao anterior, mas definindo o número de conclusões como "3" (dentro de `spec`: `completions: 3`). Agora, implantamos esse job:
 
 ```
 kubectl apply -f three-sleeps.yaml
