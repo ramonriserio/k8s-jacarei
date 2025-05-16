@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod
+spec:
+  containers:
+    - name: app
+      command: ["ls", "/etc/app-config"]
+      image: demo-app:latest
+      volumeMounts:
+        - name: config
+          mountPath: "/etc/app-config"
+          readOnly: true
+  volumes:
+    - name: config
+      configMap:
+        name: demo-config

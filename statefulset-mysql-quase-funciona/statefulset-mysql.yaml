@@ -1,4 +1,4 @@
-# StorageClass.yaml deve ser executado primeiro
+# Aplicar pvc-mysql.yaml primeiro
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -26,3 +26,7 @@ spec:
         volumeMounts:
         - name: mysql-data
           mountPath: /var/lib/mysql  # Onde os dados serão armazenados no container
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: my-pvc

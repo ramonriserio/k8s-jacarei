@@ -1,11 +1,12 @@
-# pv.yaml deve ser executado primeiro
+# Aplicar pv-mysql.yaml primeiro
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: meu-pvc
+  name: my-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
+  storageClassName: manual
