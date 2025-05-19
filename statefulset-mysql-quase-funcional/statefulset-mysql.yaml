@@ -1,10 +1,10 @@
 # Aplicar pvc-mysql.yaml primeiro
-apiVersion: apps/v1
+# Aplicar headless-service.yaml segundo ???
 kind: StatefulSet
 metadata:
   name: mysql
 spec:
-  serviceName: mysql
+  serviceName: "mysql"
   replicas: 3
   selector:
     matchLabels:

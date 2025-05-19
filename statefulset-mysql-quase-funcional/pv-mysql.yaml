@@ -9,6 +9,14 @@ spec:
   accessModes:
     - ReadWriteMany # Modo de acesso (leitura/escrita por um único Pod ???)
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
+  storageClassName: local-storage
+  local:
     path: /mnt/dados # Caminho no host onde os dados serão armazenados
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker1   # Nó em que o volume persistente será criado

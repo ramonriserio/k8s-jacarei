@@ -1,0 +1,14 @@
+# Este manifesto deve ser aplicado antes do manifesto do StatefulSet ???
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql 
+  labels:
+    app: mysql
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None # Como estamos criando um Headless Service, não queremos que ele tenha um IP, então definimos o clusterIP como None
+  selector:
+    app: mysql

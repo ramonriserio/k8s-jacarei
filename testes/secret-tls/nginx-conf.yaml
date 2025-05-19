@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  nginx.conf: "events { } # configuração de eventos\n\nhttp { # configuração do protocolo
+    HTTP, que é o protocolo que o Nginx vai usar\n  server { # configuração do servidor\n
+    \   listen 80; # porta que o Nginx vai escutar\n    listen 443 ssl; # porta que
+    o Nginx vai escutar para HTTPS e passando o parâmetro ssl para habilitar o HTTPS\n\n
+    \   ssl_certificate /etc/nginx/tls/certificado.crt; # caminho do certificado TLS\n
+    \   ssl_certificate_key /etc/nginx/tls/chave-privada.key; # caminho da chave privada\n\n
+    \   location / { # configuração da rota /\n      return 200 'Bem-vindo ao Nginx!\\n';
+    # retorna o código 200 e a mensagem Bem-vindo ao Nginx!\n      add_header Content-Type
+    text/plain; # adiciona o header Content-Type com o valor text/plain\n    } \n
+    \ }\n}"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-05-18T22:36:10Z"
+  name: nginx-config
+  namespace: default
+  resourceVersion: "497224"
+  uid: f2c12626-cef9-4058-bbb4-20139398ccb7
